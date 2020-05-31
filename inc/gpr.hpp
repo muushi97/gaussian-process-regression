@@ -11,7 +11,7 @@ public:
     };
 
 private:
-    double sigma2;                 // ノイズの標準偏差
+    double sigma2;                  // ノイズの分散
     std::vector<tensor<double>> X;  // 教師データの入力(行列)
     std::vector<double> y;          // 教師データの出力(ベクトル)
     kernel_type type;               // カーネル
@@ -29,7 +29,6 @@ private:
             for (int i = 0; i < x1.dim(0); i++)
                 s += std::pow(x1(i) - x2(i), 2);
             double s_ = 5.0 * std::sqrt(s);
-            //std::cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa : " << 1.0 * (1.0 + s_ + 5.0 / 3.0 * s) * std::exp(-1.0 * s) << std::endl;
             return 1.0 * (1.0 + s_ + 5.0 / 3.0 * s) * std::exp(-1.0 * s_);
         }
         else return 0.0;
@@ -132,13 +131,10 @@ public:
 
         double e = 0.0;
         double v = kernel(x, x);
-        //std::cout << "aaaaaaaaa : " << e << ", " << v << std::endl;
         for (int i = 0; i < X.size(); i++) {
             e += temp[i] * y[i];
             v -= temp[i] * k_ast[i];
-            //std::cout << "  bbbbbbbbb : " << temp[i] << ", " << y[i] << ", " << k_ast[i] << " ==>> " << e << ", " << v << std::endl;
         }
-        //std::cout << "  ccccccccc : " << e << ", " << v << std::endl;
         return { e, v };
     }
 };
