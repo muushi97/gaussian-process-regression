@@ -1,3 +1,6 @@
 [submodule ".template"]
 	path = .template
 	url = https://github.com/muushi97/cpp-project-template
+[submodule ".tensor"]
+	path = .tensor
+	url = https://github.com/muushi97/tensor
