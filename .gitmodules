@@ -4,3 +4,6 @@
 [submodule ".tensor"]
 	path = .tensor
 	url = https://github.com/muushi97/tensor
+[submodule ".gnuplotter"]
+	path = .gnuplotter
+	url = https://github.com/muushi97/gnuplotter
